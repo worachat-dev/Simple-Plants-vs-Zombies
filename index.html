@@ -1,0 +1,87 @@
+<html>
+  <head>
+    <title>Plants vs Zombies</title>
+
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      .container {
+        text-align: center;
+      }
+
+      #background {
+        background: url("images/frontyard.png");
+        width: 1024px;
+        height: 626px;
+      }
+      div.plant1 {
+        position: absolute;
+        background: url("images/plants2.png");
+        background-position: -115px -68px;
+        width: 60px;
+        height: 68px;
+        background-size: 700px;
+      }
+      div.zombie1 {
+        position: absolute;
+        background: url("images/monsters.png");
+        background-position: 0px -384px;
+        width: 128px;
+        height: 128px;
+      }
+      div.zombie2 {
+        position: absolute;
+        background: url("images/monsters.png");
+        background-position: 0px -256px;
+        width: 128px;
+        height: 128px;
+      }
+
+      div.zombie3 {
+        position: absolute;
+        background: url("images/monsters.png");
+        background-position: 0px -136px;
+        width: 128px;
+        height: 128px;
+      }
+
+      div.zombie4 {
+        position: absolute;
+        background: url("images/monsters.png");
+        background-position: 0px -15px;
+        width: 128px;
+        height: 128px;
+      }
+      div.bullet {
+        position: absolute;
+        background: url("images/plants2.png");
+        background-position: -490px 0px;
+        width: 30px;
+        height: 30px;
+        background-size: 700px;
+      }
+
+      #explosion {
+        display: none;
+      }
+    </style>
+    <script src="index.js"></script>
+  </head>
+
+  <body>
+    <div class="container">
+      <div id="background">
+        <div id="zombies"></div>
+        <div id="plants"></div>
+        <div id="bullets"></div>
+      </div>
+      <div id="explosion"></div>
+      <audio autoplay hidden loop>
+        <source src="bg-music.mp3" type="audio/ogg" />
+        Your browser does not support the audio element.
+      </audio>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,210 @@
+<html>
+<head>
+	<title>Game Demo</title>
+
+	<style>
+		#background{
+			background: url('images/frontyard.png');
+			width:1024px;
+			height:626px;
+		}
+		div.plant1{
+			position:absolute;
+			background: url('images/plants2.png');
+			background-position: 0px 0px;
+			width:60px;
+			height:68px;
+			background-size: 700px;
+		}
+		div.zombie1{
+			position:absolute;
+			background: url('images/monsters.png');
+			background-position: 0px -384px;
+			width:128px;
+			height:128px;
+		}
+		div.zombie2{
+			position:absolute;
+			background: url('images/monsters.png');
+			background-position: 0px -256px;
+			width:128px;
+			height:128px;
+		}
+		div.bullet{
+			position:absolute;
+			background: url('images/plants2.png');
+			background-position: -490px 0px;
+			width:30px;
+			height:30px;
+			background-size: 700px;
+		}
+	</style>
+</head>
+
+<body>
+	<div id='background'>
+		<div id='zombies'></div>
+		<div id='plants'></div>
+		<div id='bullets'></div>
+	</div>
+
+<script>
+	function Zombie(){
+		var health, type, x, y, animation;
+
+		function initialize(){
+			this.health = 100;
+			this.type = 1;
+			this.x = 0;
+			this.y = 0;
+			this.animation =0;
+		}
+
+		function updatePosition(x, y){
+			this.x = x;
+			this.y = y;
+		}
+
+		function draw(){
+
+		}
+
+		initialize();
+	}
+
+	function Plant(){
+
+	}
+
+	function Bullet(){
+
+	}
+
+	function GameLoop(){
+
+		function initialize(){
+			///
+		}
+
+		function loop(){
+			
+		}
+
+	}
+
+
+	var zombies = [{
+		health: 100,
+		type: 2,
+		x: 875,
+		y: 0,
+		animation: 0
+	},{
+		health: 100,
+		type: 1,
+		x: 875,
+		y: 3,
+		animation: 0
+	},{
+		health: 100,
+		type: 2,
+		x: 875,
+		y: 4,
+		animation: 0
+	}];
+	var plants = [{
+		x: 0,
+		y: 0
+	},{
+		x: 0,
+		y: 2
+	},{
+		x: 3,
+		y: 4
+	},{
+		x: 2,
+		y: 2
+	}];
+
+	var bullets = [];
+	var counter = 0;
+	function gameLoop(){
+		counter++;
+		if(counter%5==0){
+			moveZombies();
+			drawZombies();
+		}
+		moveBullets();
+		drawBullets();
+		if(counter%25==0){
+			fireBullets();	
+		}
+	}
+
+	setInterval(gameLoop, 50);
+
+	function fireBullets(){
+		for(var i=0; i<plants.length; i++){
+			bullets.push({
+				x: plants[i].x*80+300,
+				y: plants[i].y*100+85
+			});
+		}
+	}
+	
+	function moveZombies(){
+		for(var i=0; i<zombies.length; i++){
+			zombies[i].x--;
+			if(zombies[i].animation > 4){
+				zombies[i].animation = 0;
+			}
+			else {
+				zombies[i].animation++;
+			}
+		}
+	}
+
+	function moveBullets(){
+		for(var i=0; i<bullets.length; i++){
+			bullets[i].x += 5;
+		}
+		
+		for(var i=0; i<bullets.length; i++){
+			if(bullets[i].x > 1000){
+				bullets[i] = bullets[bullets.length-1];
+				bullets.pop();
+			}
+		}
+	}
+
+	function drawBullets(){
+		var html = '';
+		for(var i=0; i<bullets.length; i++){
+			html += "<div class='bullet' style='top: "+bullets[i].y+"px; left:"+bullets[i].x+"px;' ></div>";
+		}
+		document.getElementById('bullets').innerHTML = html;
+	}
+
+	function drawZombies(){
+		var html = '';
+		for(var i=0; i<zombies.length; i++){
+			html += "<div class='zombie"+zombies[i].type+"' style='top:"+(zombies[i].y*100+20)+"px; left:"+zombies[i].x+"px; background-position-x: -"+zombies[i].animation*128+"px;'></div>";
+		}
+		document.getElementById('zombies').innerHTML = html;
+	}
+	function drawPlants(){
+		var html = '';
+		for(var i=0; i<plants.length; i++){
+			html += "<div class='plant1' style='top:"+(plants[i].y*100+85)+"px; left:"+(plants[i].x*80+265)+"px;'></div>";
+		}
+		document.getElementById('plants').innerHTML = html;
+	}
+	drawZombies();
+	drawPlants();
+
+
+</script>
+
+</body>
+
+</html>
