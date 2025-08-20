@@ -37,7 +37,6 @@ The game uses sprites for plants, zombies, and bullets, and includes animations,
 1. Clone or download this repository:
    ```bash
    git clone https://github.com/your-username/plants-vs-zombies-js.git
-````
 
 2. Open **index.html** in your browser.
 3. Enjoy the game 🎮.
@@ -81,6 +80,5 @@ This project is for **educational purposes only** and is not affiliated with or 
 
 Developed as a demo project using vanilla JavaScript for learning purposes.
 
-```
-```
+
 
